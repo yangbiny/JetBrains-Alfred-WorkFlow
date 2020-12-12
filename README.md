@@ -8,3 +8,5 @@ Drag the .workflow file into Alfred
 
 ### KeyWord
 You can double-click to modify it to your favorite keyword
+
+### The workflow package in the code comes from Alfred official
