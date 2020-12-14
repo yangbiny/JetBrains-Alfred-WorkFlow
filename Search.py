@@ -11,5 +11,5 @@ if __name__ == '__main__':
     for job in jobs:
         index = job.rfind("/")
         jobName = job[index + 1:]
-        wf.add_item(title=jobName, subtitle=job+","+path, arg=job, valid=True)
+        wf.add_item(title=jobName, subtitle=job, arg=job+","+path, valid=True)
     wf.send_feedback()
