@@ -1,6 +1,7 @@
 from base import JetBrainsUtils
 from workflow import Workflow
 import sys
+import os
 
 if __name__ == '__main__':
     path = sys.argv[1]
@@ -8,8 +9,11 @@ if __name__ == '__main__':
     jobs = jetbrains.readFile()
     wf = Workflow()
     jsonStr = list()
+    user_home = os.path.expandvars('$HOME')
     for job in jobs:
         index = job.rfind("/")
         jobName = job[index + 1:]
-        wf.add_item(title=jobName, subtitle=job, arg=job+","+path, valid=True)
+        jobStr = str(job)
+        jobStr = jobStr.replace("$USER_HOME$", user_home)
+        wf.add_item(title=jobName, subtitle=job, arg=jobStr+","+path, valid=True)
     wf.send_feedback()
